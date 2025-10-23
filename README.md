@@ -335,13 +335,13 @@ Consider the function `removeLastPurely`. It is a **pure function**.
 
 ```javascript
 const removeLastPurely = (arr) => {
-  const arr = [...arr];
+  const arrCopy = [...arr];
   arrCopy.pop();
   return arrCopy;
 }
 
 const fruits = ['apple', 'banana', 'cherry', 'date'];
-const fruitsMinusOne = removeLastFrom(fruits);
+const fruitsMinusOne = removeLastPurely(fruits);
 ```
 
 After this code runs, explain what values will be held by `fruits` and `fruitMinusOne`.
