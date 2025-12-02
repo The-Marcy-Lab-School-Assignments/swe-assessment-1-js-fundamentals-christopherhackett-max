@@ -9,7 +9,7 @@ Write your responses directly in this file. Follow markdown formatting guideline
 ### Question 1
 This code will give you a `ReferenceError`.
 
-You'd get a ReferenceError because you are trying to access the variable `currentStatus` outside of the if statement when it's only in the `scope` of said if statement.
+You'd get a ReferenceError because you are trying to access the variable `currentStatus` outside of the if statement when it's only in the `block scope` of said if statement.
 
 The best way to fix this error would be to define `currentStatus` outside of the if statement first.
 
@@ -28,7 +28,7 @@ The following code will log the following strings:
 "Paul is the hardest working person in the room."
 "Laisha is the hardest working person in the room."
 ```
-This is because in the `scope` of the function `shoutOut`, `theHustler` is Paul while in the scope outside of the function `theHustler` is Laisha. So if you call the function you will get Paul, and if you log outside of the function you will get Laisha.
+This is because in the `scope` of the function `shoutOut`, `theHustler` is Paul while in the scope outside of the function and is in the `global scope`, `theHustler` is Laisha. So if you call the function you will get Paul, and if you log outside of the function you will get Laisha.
 ### Question 4
 The purpose of `rest parameters` is to allow your function to accept an unlimited number of arguments and hold them as an array. This give a way to deal with functions where the number of arguments is unknown.
 
@@ -98,31 +98,33 @@ const fullName () => {
 }
 ```
 
+The ``firstName()`` and ``lastName()`` are being **exported** from the ``names.js`` file and are being **imported** into the ``main.js`` file. Meaning that main.js now has access to those functions and can use them as normal.
+
 ### Question 7
 After running the code, `fruits` will hold the values, `'apple', 'banana', 'cherry', and 'date'`. While `fruitsMinusOne` will hold the values, `'apple', 'banana', and 'cherry'`.
 
-It is necessary to make a copy of the array because a pure function doesn't change anything outside of it's scope. As well as returns the same output, given the same input. If you don't make a copy you will be changing the array given, making it **NOT** a pure function.
+We need to make a copy because arrays are reference types: the parameter holds the reference to the provided array, not a copy of the array's data. Therefore, mutating the input array would cause the side effect of mutating a value outside of the function's scope, making the function impure.
 
 Lets say you were using an array in a huge project with multiple functions that interact with that array. If you mutate that array, you'll also be mutating the output for all of those functions which could destroy your code.
 
 ### Question 8
 To represent a single item in the cart I would use an object. This is because an item could have multiple properties that need to be accessed such as its name, quantity, and price.
 
-To represent the entire shopping cart I would use an array filled with each individual item. This is because arrays can store many elements of any data type. Allowing you to store every item you need.
+To represent the entire shopping cart I would use an array filled with each individual item. This is because arrays can store many elements of any data type. Allowing you to store every item you need. As well as being able to iterate through each object in the array, meaning the ability to easily access every item in the cart.
 
 An example of this could be: 
 ```js
 const shoppingCart = [{
     itemName: 'chips',
-    quantity; 5,
-    priceEach; 4.99
+    quantity: 5,
+    priceEach: 4.99
 }, {
     itemName: 'orange juice',
-    quantity; 2,
-    priceEach; 8.99
+    quantity: 2,
+    priceEach: 8.99
 }, {
     itemName: 'gum',
-    quantity; 1,
-    priceEach; 2.75
+    quantity: 1,
+    priceEach: 2.75
 }]
 ```
